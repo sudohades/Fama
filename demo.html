@@ -1,0 +1,399 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Live Demo - Fama</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">🌱 Fama</div>
+            <ul class="nav-menu">
+                <li><a href="index.html" class="nav-link">Home</a></li>
+                <li><a href="services.html" class="nav-link">Services</a></li>
+                <li><a href="team.html" class="nav-link">Team</a></li>
+                <li><a href="demo.html" class="nav-link active">Demo</a></li>
+            </ul>
+            <button class="btn-primary">Get Started</button>
+        </div>
+    </nav>
+
+    <header class="page-header">
+        <div class="section-container">
+            <h1 class="page-title">Experience Fama in Action</h1>
+            <p class="page-subtitle">Explore our interactive demo to see how Fama transforms farm management</p>
+        </div>
+    </header>
+
+    <section class="demo-tabs">
+        <div class="section-container">
+            <div class="tabs-header">
+                <button class="tab-button active" data-tab="sms">SMS Messaging</button>
+                <button class="tab-button" data-tab="sales">Sales Tracking</button>
+                <button class="tab-button" data-tab="weather">Weather Forecast</button>
+                <button class="tab-button" data-tab="pest">Pest Alerts</button>
+            </div>
+
+            <div class="tab-content active" id="tab-sms">
+                <div class="demo-container">
+                    <div class="demo-panel">
+                        <h3 class="demo-title">Compose Bulk SMS</h3>
+                        <div class="form-group">
+                            <label class="form-label">Select Recipients</label>
+                            <select class="form-select" id="sms-recipients">
+                                <option>All Customers (847)</option>
+                                <option>Wholesale Buyers (142)</option>
+                                <option>Retail Customers (658)</option>
+                                <option>Restaurant Partners (47)</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">Message Template</label>
+                            <select class="form-select" id="sms-template">
+                                <option>Custom Message</option>
+                                <option>Harvest Update</option>
+                                <option>Price Change</option>
+                                <option>New Product Available</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">Message Content</label>
+                            <textarea class="form-textarea" id="sms-message" rows="5" placeholder="Type your message here...">Hello! Fresh tomatoes are ready for harvest. Quality Grade A. Price: KSh 80/kg. Available from Monday. Order now: 0712-345-678. - Fama Farms</textarea>
+                            <div class="char-counter"><span id="char-count">156</span>/160 characters</div>
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">Schedule Delivery</label>
+                            <div class="form-row">
+                                <input type="date" class="form-input" id="sms-date" value="">
+                                <input type="time" class="form-input" id="sms-time" value="09:00">
+                            </div>
+                        </div>
+                        <button class="btn-primary btn-large btn-block" id="send-sms">Send Message</button>
+                        <div class="demo-result" id="sms-result"></div>
+                    </div>
+                    <div class="demo-preview">
+                        <h3 class="demo-title">Message Preview</h3>
+                        <div class="phone-mockup">
+                            <div class="phone-screen">
+                                <div class="sms-preview">
+                                    <div class="sms-bubble">
+                                        <p id="preview-text">Hello! Fresh tomatoes are ready for harvest. Quality Grade A. Price: KSh 80/kg. Available from Monday. Order now: 0712-345-678. - Fama Farms</p>
+                                        <div class="sms-time">9:00 AM</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="tab-content" id="tab-sales">
+                <div class="demo-container">
+                    <div class="demo-full">
+                        <h3 class="demo-title">Sales Dashboard</h3>
+                        <div class="stats-row">
+                            <div class="stat-card">
+                                <div class="stat-icon">💰</div>
+                                <div class="stat-details">
+                                    <div class="stat-value">KSh 245,800</div>
+                                    <div class="stat-label">Total Revenue (Oct)</div>
+                                    <div class="stat-change positive">+12.5% from Sept</div>
+                                </div>
+                            </div>
+                            <div class="stat-card">
+                                <div class="stat-icon">📦</div>
+                                <div class="stat-details">
+                                    <div class="stat-value">1,456 kg</div>
+                                    <div class="stat-label">Products Sold</div>
+                                    <div class="stat-change positive">+8.3% from Sept</div>
+                                </div>
+                            </div>
+                            <div class="stat-card">
+                                <div class="stat-icon">👥</div>
+                                <div class="stat-details">
+                                    <div class="stat-value">142</div>
+                                    <div class="stat-label">Active Customers</div>
+                                    <div class="stat-change positive">+5 new</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="chart-container">
+                            <h4 class="chart-title">Monthly Revenue Trend</h4>
+                            <div class="chart-placeholder" id="sales-chart">
+                                <svg viewBox="0 0 600 250" class="line-chart">
+                                    <polyline points="50,200 100,180 150,165 200,170 250,150 300,140 350,135 400,120 450,110 500,95 550,85" stroke="#2d5016" fill="none" stroke-width="3"/>
+                                    <text x="50" y="220" class="chart-label">May</text>
+                                    <text x="150" y="220" class="chart-label">Jun</text>
+                                    <text x="250" y="220" class="chart-label">Jul</text>
+                                    <text x="350" y="220" class="chart-label">Aug</text>
+                                    <text x="450" y="220" class="chart-label">Sep</text>
+                                    <text x="550" y="220" class="chart-label">Oct</text>
+                                </svg>
+                            </div>
+                        </div>
+                        <div class="table-container">
+                            <h4 class="chart-title">Top Selling Products</h4>
+                            <table class="data-table">
+                                <thead>
+                                    <tr>
+                                        <th>Product</th>
+                                        <th>Quantity Sold</th>
+                                        <th>Revenue</th>
+                                        <th>Growth</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>🍅 Tomatoes</td>
+                                        <td>685 kg</td>
+                                        <td>KSh 54,800</td>
+                                        <td class="positive">+15%</td>
+                                    </tr>
+                                    <tr>
+                                        <td>🥕 Carrots</td>
+                                        <td>420 kg</td>
+                                        <td>KSh 42,000</td>
+                                        <td class="positive">+8%</td>
+                                    </tr>
+                                    <tr>
+                                        <td>🌽 Maize</td>
+                                        <td>351 kg</td>
+                                        <td>KSh 21,060</td>
+                                        <td class="negative">-3%</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="tab-content" id="tab-weather">
+                <div class="demo-container">
+                    <div class="demo-full">
+                        <h3 class="demo-title">7-Day Weather Forecast</h3>
+                        <div class="location-info">
+                            <span class="location-icon">📍</span>
+                            <span class="location-text">Kiambu County, Kenya</span>
+                        </div>
+                        <div class="weather-grid">
+                            <div class="weather-card weather-today">
+                                <div class="weather-day">Today</div>
+                                <div class="weather-icon">☀️</div>
+                                <div class="weather-temp">26°C</div>
+                                <div class="weather-desc">Sunny</div>
+                                <div class="weather-details">
+                                    <div class="weather-detail">💧 20%</div>
+                                    <div class="weather-detail">💨 12 km/h</div>
+                                </div>
+                            </div>
+                            <div class="weather-card">
+                                <div class="weather-day">Sat</div>
+                                <div class="weather-icon">⛅</div>
+                                <div class="weather-temp">24°C</div>
+                                <div class="weather-desc">Partly Cloudy</div>
+                                <div class="weather-details">
+                                    <div class="weather-detail">💧 35%</div>
+                                    <div class="weather-detail">💨 15 km/h</div>
+                                </div>
+                            </div>
+                            <div class="weather-card">
+                                <div class="weather-day">Sun</div>
+                                <div class="weather-icon">🌧️</div>
+                                <div class="weather-temp">22°C</div>
+                                <div class="weather-desc">Rainy</div>
+                                <div class="weather-details">
+                                    <div class="weather-detail">💧 85%</div>
+                                    <div class="weather-detail">💨 18 km/h</div>
+                                </div>
+                            </div>
+                            <div class="weather-card">
+                                <div class="weather-day">Mon</div>
+                                <div class="weather-icon">🌦️</div>
+                                <div class="weather-temp">23°C</div>
+                                <div class="weather-desc">Light Rain</div>
+                                <div class="weather-details">
+                                    <div class="weather-detail">💧 60%</div>
+                                    <div class="weather-detail">💨 14 km/h</div>
+                                </div>
+                            </div>
+                            <div class="weather-card">
+                                <div class="weather-day">Tue</div>
+                                <div class="weather-icon">⛅</div>
+                                <div class="weather-temp">25°C</div>
+                                <div class="weather-desc">Partly Cloudy</div>
+                                <div class="weather-details">
+                                    <div class="weather-detail">💧 30%</div>
+                                    <div class="weather-detail">💨 10 km/h</div>
+                                </div>
+                            </div>
+                            <div class="weather-card">
+                                <div class="weather-day">Wed</div>
+                                <div class="weather-icon">☀️</div>
+                                <div class="weather-temp">27°C</div>
+                                <div class="weather-desc">Sunny</div>
+                                <div class="weather-details">
+                                    <div class="weather-detail">💧 15%</div>
+                                    <div class="weather-detail">💨 11 km/h</div>
+                                </div>
+                            </div>
+                            <div class="weather-card">
+                                <div class="weather-day">Thu</div>
+                                <div class="weather-icon">☀️</div>
+                                <div class="weather-temp">28°C</div>
+                                <div class="weather-desc">Sunny</div>
+                                <div class="weather-details">
+                                    <div class="weather-detail">💧 10%</div>
+                                    <div class="weather-detail">💨 9 km/h</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="weather-alerts">
+                            <h4 class="alert-title">Agricultural Recommendations</h4>
+                            <div class="alert-card">
+                                <span class="alert-icon">🌱</span>
+                                <p class="alert-text"><strong>Good planting conditions</strong> expected next week. Consider planting short-season vegetables after Sunday's rainfall.</p>
+                            </div>
+                            <div class="alert-card">
+                                <span class="alert-icon">💧</span>
+                                <p class="alert-text"><strong>Irrigation notice:</strong> No irrigation needed until Tuesday due to expected rainfall this weekend.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="tab-content" id="tab-pest">
+                <div class="demo-container">
+                    <div class="demo-full">
+                        <h3 class="demo-title">Pest & Disease Alert System</h3>
+                        <div class="alert-priority">
+                            <div class="priority-card priority-high">
+                                <div class="priority-header">
+                                    <span class="priority-badge">High Priority</span>
+                                    <span class="priority-date">Oct 30, 2025</span>
+                                </div>
+                                <h4 class="priority-title">🐛 Fall Armyworm Activity Detected</h4>
+                                <p class="priority-desc">Multiple reports of fall armyworm sightings in neighboring Murang'a County. Current weather conditions (warm and humid) favor rapid spread to your region.</p>
+                                <div class="priority-info">
+                                    <div class="info-item">
+                                        <strong>Affected Crops:</strong> Maize, Sorghum
+                                    </div>
+                                    <div class="info-item">
+                                        <strong>Risk Level:</strong> High in next 7-10 days
+                                    </div>
+                                    <div class="info-item">
+                                        <strong>Recommended Action:</strong> Inspect crops daily, consider early application of biocontrol agents
+                                    </div>
+                                </div>
+                                <button class="btn-secondary">View Treatment Options</button>
+                            </div>
+
+                            <div class="priority-card priority-medium">
+                                <div class="priority-header">
+                                    <span class="priority-badge priority-medium-badge">Medium Priority</span>
+                                    <span class="priority-date">Oct 28, 2025</span>
+                                </div>
+                                <h4 class="priority-title">🍄 Tomato Late Blight Risk</h4>
+                                <p class="priority-desc">Weather forecast shows conditions favorable for late blight development. Expected rainfall and cooler temperatures increase infection risk.</p>
+                                <div class="priority-info">
+                                    <div class="info-item">
+                                        <strong>Affected Crops:</strong> Tomatoes, Potatoes
+                                    </div>
+                                    <div class="info-item">
+                                        <strong>Risk Level:</strong> Moderate, monitor closely
+                                    </div>
+                                    <div class="info-item">
+                                        <strong>Recommended Action:</strong> Improve air circulation, consider preventive fungicide application
+                                    </div>
+                                </div>
+                                <button class="btn-secondary">View Treatment Options</button>
+                            </div>
+
+                            <div class="priority-card priority-low">
+                                <div class="priority-header">
+                                    <span class="priority-badge priority-low-badge">Informational</span>
+                                    <span class="priority-date">Oct 25, 2025</span>
+                                </div>
+                                <h4 class="priority-title">🦗 Aphid Population Increase</h4>
+                                <p class="priority-desc">Seasonal increase in aphid populations observed regionally. Current levels are manageable but monitoring recommended.</p>
+                                <div class="priority-info">
+                                    <div class="info-item">
+                                        <strong>Affected Crops:</strong> Various leafy vegetables
+                                    </div>
+                                    <div class="info-item">
+                                        <strong>Risk Level:</strong> Low, routine monitoring
+                                    </div>
+                                    <div class="info-item">
+                                        <strong>Recommended Action:</strong> Regular field inspections, encourage beneficial insects
+                                    </div>
+                                </div>
+                                <button class="btn-secondary">View Treatment Options</button>
+                            </div>
+                        </div>
+
+                        <div class="pest-map">
+                            <h4 class="chart-title">Regional Pest Activity Map</h4>
+                            <div class="map-placeholder">
+                                <div class="map-legend">
+                                    <div class="legend-item"><span class="legend-color high"></span> High Activity</div>
+                                    <div class="legend-item"><span class="legend-color medium"></span> Medium Activity</div>
+                                    <div class="legend-item"><span class="legend-color low"></span> Low Activity</div>
+                                </div>
+                                <p class="map-info">🗺️ Interactive pest activity map shows real-time reports from your region and neighboring counties</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="demo-cta">
+        <div class="section-container">
+            <h2 class="cta-title">Ready to Get Started?</h2>
+            <p class="cta-text">Experience the full power of Fama with a free 14-day trial. No credit card required.</p>
+            <button class="btn-primary btn-large">Start Free Trial</button>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="footer-container">
+            <div class="footer-section">
+                <div class="footer-logo">🌱 Fama</div>
+                <p class="footer-text">Empowering farmers with technology for sustainable growth and better customer connections.</p>
+            </div>
+            <div class="footer-section">
+                <h4 class="footer-heading">Platform</h4>
+                <ul class="footer-links">
+                    <li><a href="#" class="footer-link">Features</a></li>
+                    <li><a href="#" class="footer-link">Pricing</a></li>
+                    <li><a href="#" class="footer-link">Documentation</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h4 class="footer-heading">Company</h4>
+                <ul class="footer-links">
+                    <li><a href="#" class="footer-link">About Us</a></li>
+                    <li><a href="team.html" class="footer-link">Team</a></li>
+                    <li><a href="#" class="footer-link">Contact</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h4 class="footer-heading">Legal</h4>
+                <ul class="footer-links">
+                    <li><a href="#" class="footer-link">Privacy Policy</a></li>
+                    <li><a href="#" class="footer-link">Terms of Service</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2025 Fama. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
