@@ -5,6 +5,7 @@ document.addEventListener('DOMContentLoaded', () => {
     initWeatherAPI();
     initTimeUpdates();
     initAnimations();
+    initServicePlanButtons();
 });
 
 function initMobileNav() {
@@ -343,3 +344,35 @@ style.textContent = `
     }
 `;
 document.head.appendChild(style);
+
+function initServicePlanButtons() {
+    const planButtons = document.querySelectorAll('.select-service-plan');
+    planButtons.forEach(button => {
+        button.addEventListener('click', (e) => {
+            const plan = e.target.dataset.plan;
+            const planName = e.target.dataset.planName;
+            const price = e.target.closest('.pricing-card').querySelector('.pricing-amount').textContent;
+
+            const tempProfile = {
+                name: '',
+                role: 'seller',
+                phone: '',
+                address: '',
+                county: '',
+                farmName: '',
+                primaryCrops: '',
+                subscription: {
+                    plan: plan,
+                    planName: planName,
+                    price: price,
+                    selectedAt: new Date().toISOString()
+                },
+                timestamp: new Date().toISOString(),
+                fromServicePage: true
+            };
+
+            sessionStorage.setItem('pendingFarmerProfile', JSON.stringify(tempProfile));
+            window.location.href = 'buynsell.html';
+        });
+    });
+}

@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Marketplace - Fama</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">🌱 Fama</div>
+            <ul class="nav-menu">
+                <li><a href="index.html" class="nav-link">Home</a></li>
+                <li><a href="services.html" class="nav-link">Services</a></li>
+                <li><a href="team.html" class="nav-link">Team</a></li>
+                <li><a href="demo.html" class="nav-link">Demo</a></li>
+                <li><a href="buynsell.html" class="nav-link active">Marketplace</a></li>
+            </ul>
+            <a href="buynsell.html" class="btn-primary">Get Started</a>
+        </div>
+    </nav>
+
+    <header class="page-header">
+        <div class="section-container">
+            <h1 class="page-title">Fama Marketplace</h1>
+            <p class="page-subtitle">Connect farmers and buyers for fresh agricultural products</p>
+        </div>
+    </header>
+
+    <section class="role-selector">
+        <div class="section-container">
+            <h2 class="section-title">Select Your Role</h2>
+            <div class="role-grid">
+                <button class="role-card" data-role="buyer">
+                    <div class="role-icon">🛒</div>
+                    <h3 class="role-title">Buyer</h3>
+                    <p class="role-description">Browse and purchase fresh produce directly from farmers</p>
+                </button>
+                <button class="role-card" data-role="seller">
+                    <div class="role-icon">🌾</div>
+                    <h3 class="role-title">Farmer Seller</h3>
+                    <p class="role-description">List and sell your agricultural products to customers</p>
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <section class="user-profile-section">
+        <div class="section-container">
+            <div class="profile-container">
+                <div class="profile-form">
+                    <h2 class="section-title">Create Your Profile</h2>
+                    <form class="marketplace-form" id="user-profile-form">
+                        <div class="form-group">
+                            <label class="form-label">Full Name *</label>
+                            <input type="text" class="form-input" id="user-name" placeholder="Enter your full name" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="form-label">Role *</label>
+                            <div class="role-display">
+                                <input type="hidden" id="user-role" value="">
+                                <div class="selected-role" id="selected-role">Select a role above</div>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="form-label">Phone Number *</label>
+                            <input type="tel" class="form-input" id="user-phone" placeholder="e.g., +254 712 345 678" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="form-label">Address *</label>
+                            <input type="text" class="form-input" id="user-address" placeholder="Street address or area name" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="form-label">County/Region</label>
+                            <select class="form-select" id="user-county">
+                                <option value="">Select County</option>
+                                <option value="nairobi">Nairobi</option>
+                                <option value="kiambu">Kiambu</option>
+                                <option value="murang'a">Murang'a</option>
+                                <option value="nyeri">Nyeri</option>
+                                <option value="kajiado">Kajiado</option>
+                                <option value="machakos">Machakos</option>
+                                <option value="mombasa">Mombasa</option>
+                                <option value="kisumu">Kisumu</option>
+                                <option value="nakuru">Nakuru</option>
+                                <option value="uasin-gishu">Uasin Gishu</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group seller-only" style="display: none;">
+                            <label class="form-label">Farm Name</label>
+                            <input type="text" class="form-input" id="farm-name" placeholder="e.g., Kariuki Family Farms">
+                        </div>
+
+                        <div class="form-group seller-only" style="display: none;">
+                            <label class="form-label">Primary Crops/Products</label>
+                            <input type="text" class="form-input" id="primary-crops" placeholder="e.g., Tomatoes, Carrots, Maize">
+                        </div>
+
+                        <div class="form-group buyer-only" style="display: none;">
+                            <label class="form-label">Business Type</label>
+                            <select class="form-select" id="business-type">
+                                <option value="">Select Business Type</option>
+                                <option value="restaurant">Restaurant</option>
+                                <option value="retail">Retail Shop</option>
+                                <option value="wholesaler">Wholesaler</option>
+                                <option value="personal">Personal Use</option>
+                                <option value="institution">Institution/School</option>
+                                <option value="other">Other</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="form-checkbox">
+                                <input type="checkbox" id="terms-check" required>
+                                <span>I agree to the Terms of Service and Privacy Policy</span>
+                            </label>
+                        </div>
+
+                        <button type="submit" class="btn-primary btn-large btn-block">Create Profile & Continue</button>
+                        <div class="form-result" id="form-result"></div>
+                    </form>
+                </div>
+
+                <div class="profile-info">
+                    <h3 class="info-title">Profile Information</h3>
+                    <div class="info-display" id="profile-display">
+                        <div class="info-empty">Select a role and fill in the form to create your profile</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="subscription-section" id="subscription-section" style="display: none;">
+        <div class="section-container">
+            <h2 class="section-title">Choose Your Farmer Subscription Plan</h2>
+            <p class="section-subtitle">Select a plan that fits your farming business needs</p>
+            <div class="subscription-grid">
+                <div class="subscription-card" data-plan="basic">
+                    <h3 class="subscription-tier">Starter</h3>
+                    <div class="subscription-price">
+                        <span class="price-amount">KSh 500</span>
+                        <span class="price-period">/month</span>
+                    </div>
+                    <ul class="subscription-features">
+                        <li class="subscription-feature">✓ List up to 5 products</li>
+                        <li class="subscription-feature">✓ Basic analytics</li>
+                        <li class="subscription-feature">✓ Direct messaging with buyers</li>
+                        <li class="subscription-feature">✓ Email support</li>
+                        <li class="subscription-feature">✗ SMS marketing credits</li>
+                        <li class="subscription-feature">✗ Advanced weather data</li>
+                    </ul>
+                    <button class="btn-secondary btn-large btn-block select-plan">Select Plan</button>
+                </div>
+                <div class="subscription-card subscription-featured" data-plan="professional">
+                    <div class="subscription-badge">Most Popular</div>
+                    <h3 class="subscription-tier">Professional</h3>
+                    <div class="subscription-price">
+                        <span class="price-amount">KSh 1,500</span>
+                        <span class="price-period">/month</span>
+                    </div>
+                    <ul class="subscription-features">
+                        <li class="subscription-feature">✓ List up to 25 products</li>
+                        <li class="subscription-feature">✓ Advanced analytics</li>
+                        <li class="subscription-feature">✓ Direct messaging & SMS alerts</li>
+                        <li class="subscription-feature">✓ 500 SMS marketing credits</li>
+                        <li class="subscription-feature">✓ Priority support</li>
+                        <li class="subscription-feature">✓ Weather & pest alerts</li>
+                    </ul>
+                    <button class="btn-primary btn-large btn-block select-plan">Select Plan</button>
+                </div>
+                <div class="subscription-card" data-plan="enterprise">
+                    <h3 class="subscription-tier">Premium</h3>
+                    <div class="subscription-price">
+                        <span class="price-amount">KSh 3,000</span>
+                        <span class="price-period">/month</span>
+                    </div>
+                    <ul class="subscription-features">
+                        <li class="subscription-feature">✓ Unlimited product listings</li>
+                        <li class="subscription-feature">✓ Full analytics suite</li>
+                        <li class="subscription-feature">✓ Bulk SMS & email campaigns</li>
+                        <li class="subscription-feature">✓ 2,000 SMS credits/month</li>
+                        <li class="subscription-feature">✓ 24/7 dedicated support</li>
+                        <li class="subscription-feature">✓ Advanced insights & forecasting</li>
+                    </ul>
+                    <button class="btn-secondary btn-large btn-block select-plan">Select Plan</button>
+                </div>
+            </div>
+            <div class="subscription-result" id="subscription-result"></div>
+        </div>
+    </section>
+
+    <section class="user-profile-section">
+        <div class="section-container">
+            <div class="profile-container">
+                <div class="profile-form" style="display: none;" id="profile-form-container">
+                    <h2 class="section-title">Create Your Profile</h2>
+                    <form class="marketplace-form" id="user-profile-form">
+                        <div class="form-group">
+                            <label class="form-label">Full Name *</label>
+                            <input type="text" class="form-input" id="user-name" placeholder="Enter your full name" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="form-label">Role *</label>
+                            <div class="role-display">
+                                <input type="hidden" id="user-role" value="">
+                                <div class="selected-role" id="selected-role">Select a role above</div>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="form-label">Phone Number *</label>
+                            <input type="tel" class="form-input" id="user-phone" placeholder="e.g., +254 712 345 678" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="form-label">Address *</label>
+                            <input type="text" class="form-input" id="user-address" placeholder="Street address or area name" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="form-label">County/Region</label>
+                            <select class="form-select" id="user-county">
+                                <option value="">Select County</option>
+                                <option value="nairobi">Nairobi</option>
+                                <option value="kiambu">Kiambu</option>
+                                <option value="murang'a">Murang'a</option>
+                                <option value="nyeri">Nyeri</option>
+                                <option value="kajiado">Kajiado</option>
+                                <option value="machakos">Machakos</option>
+                                <option value="mombasa">Mombasa</option>
+                                <option value="kisumu">Kisumu</option>
+                                <option value="nakuru">Nakuru</option>
+                                <option value="uasin-gishu">Uasin Gishu</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group seller-only" style="display: none;">
+                            <label class="form-label">Farm Name</label>
+                            <input type="text" class="form-input" id="farm-name" placeholder="e.g., Kariuki Family Farms">
+                        </div>
+
+                        <div class="form-group seller-only" style="display: none;">
+                            <label class="form-label">Primary Crops/Products</label>
+                            <input type="text" class="form-input" id="primary-crops" placeholder="e.g., Soghurm, Millet, Maize">
+                        </div>
+
+                        <div class="form-group buyer-only" style="display: none;">
+                            <label class="form-label">Business Type</label>
+                            <select class="form-select" id="business-type">
+                                <option value="">Select Business Type</option>
+                                <option value="restaurant">Restaurant</option>
+                                <option value="retail">Retail Shop</option>
+                                <option value="wholesaler">Wholesaler</option>
+                                <option value="personal">Personal Use</option>
+                                <option value="institution">Institution/School</option>
+                                <option value="other">Other</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="form-checkbox">
+                                <input type="checkbox" id="terms-check" required>
+                                <span>I agree to the Terms of Service and Privacy Policy</span>
+                            </label>
+                        </div>
+
+                        <button type="submit" class="btn-primary btn-large btn-block">Create Profile & Continue</button>
+                        <div class="form-result" id="form-result"></div>
+                    </form>
+                </div>
+                    </form>
+                </div>
+
+                <div class="profile-info">
+                    <h3 class="info-title">Profile Information</h3>
+                    <div class="info-display" id="profile-display">
+                        <div class="info-empty">Select a role and fill in the form to create your profile</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="marketplace-features">
+        <div class="section-container">
+            <h2 class="section-title">How It Works</h2>
+            <div class="feature-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">1️⃣</div>
+                    <h3 class="feature-title">Create Profile</h3>
+                    <p class="feature-text">Set up your account as a buyer or farmer seller with your location and preferences.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">2️⃣</div>
+                    <h3 class="feature-title">Browse or List</h3>
+                    <p class="feature-text">Buyers browse available products; Sellers list their fresh produce with details and pricing.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">3️⃣</div>
+                    <h3 class="feature-title">Connect</h3>
+                    <p class="feature-text">Use direct messaging or SMS to negotiate terms and arrange delivery or pickup.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">4️⃣</div>
+                    <h3 class="feature-title">Transact</h3>
+                    <p class="feature-text">Complete purchases with transparent pricing and build your reputation with reviews.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="footer-container">
+            <div class="footer-section">
+                <div class="footer-logo">🌱 Fama</div>
+                <p class="footer-text">Empowering farmers with technology for sustainable growth and better customer connections.</p>
+            </div>
+            <div class="footer-section">
+                <h4 class="footer-heading">Platform</h4>
+                <ul class="footer-links">
+                    <li><a href="#" class="footer-link">Features</a></li>
+                    <li><a href="#" class="footer-link">Pricing</a></li>
+                    <li><a href="#" class="footer-link">Documentation</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h4 class="footer-heading">Company</h4>
+                <ul class="footer-links">
+                    <li><a href="#" class="footer-link">About Us</a></li>
+                    <li><a href="team.html" class="footer-link">Team</a></li>
+                    <li><a href="#" class="footer-link">Contact</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h4 class="footer-heading">Legal</h4>
+                <ul class="footer-links">
+                    <li><a href="#" class="footer-link">Privacy Policy</a></li>
+                    <li><a href="#" class="footer-link">Terms of Service</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2025 Fama. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+    <script src="marketplace.js"></script>
+</body>
+</html>
