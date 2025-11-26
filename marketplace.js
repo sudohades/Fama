@@ -92,7 +92,7 @@ function initProfileForm() {
    SAVE PROFILE
 -------------------------------------------------- */
 function saveProfile(profile) {
-    sessionStorage.setItem("agriflow_profile", JSON.stringify(profile));
+    sessionStorage.setItem("agrilink_profile", JSON.stringify(profile));
 }
 
 /* --------------------------------------------------
